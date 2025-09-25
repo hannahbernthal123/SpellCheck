@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Timeout;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 public class SpellCheckTest {
 
     private final SpellCheck studentSolution = new SpellCheck();
