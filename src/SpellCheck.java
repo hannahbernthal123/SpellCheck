@@ -33,6 +33,7 @@ public class SpellCheck {
             }
         }
 
+        // Method that turns the set into an array.
         return incorrectWords.toArray(new String[0]);
     }
 
