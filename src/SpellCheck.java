@@ -25,52 +25,38 @@ public class SpellCheck {
         String[] perm = new String[text.length];
 
         // Collect matches (preserve order, remove duplicates)
-        LinkedHashSet<String> matches = new LinkedHashSet<>();
+        LinkedHashSet<String> incorrectWords = new LinkedHashSet<>();
 
-        for (String w : text) {
-            if (binarySearch(dictionary, w)) {
-                matches.add(w);
+        for (String word : text) {
+            if (!binarySearch(dictionary, word)) {
+                incorrectWords.add(word);
             }
         }
 
-        return matches.toArray(new String[0]);
+        return incorrectWords.toArray(new String[0]);
     }
 
-    private boolean binarySearch(String[] sorted, String target) {
-            int low = 0, hi = sorted.length - 1;
+    private boolean binarySearch(String[] dictionary, String currWord) {
+            int low = 0;
+            int hi = dictionary.length - 1;
             while (low <= hi) {
                 int mid = low + (hi - low) / 2;
-                int cmp = sorted[mid].compareTo(target);
-                if (cmp == 0) return true;
-                if (cmp < 0)  low = mid + 1;
-                else          hi = mid - 1;
+                // representativeNum is the representation of how the current word compares to the middle of where we are in the dicitonary.
+                // repNum = 0 if the words are the same, is positive if
+                int repNum = dictionary[mid].compareTo(currWord);
+                if (repNum == 0) {
+                    return true;
+                }
+                if (repNum < 0)  {
+                    low = mid + 1;
+                }
+                else {
+                    hi = mid - 1;
+                }
             }
             return false;
 
     }
 
-//
-//        for (int i = 0; i < text.length - 1; i++) {
-//            for (int j = 0; j < dictionary.length - 1; j++) {
-//                if (dictionary[j] == text[i]) {
-//                    textClone.remove(i);
-//                }
-//            }
-//        }
-//
-//        int i = 0;
-//        while (i < textClone.size() - 1) {
-//            String word = textClone.get(i);
-//            if (word.equals(textClone.get(i + 1)))
-//                textClone.remove(i + 1);
-//            else
-//                i++;
-//        }
-//
-//        for (int k = 0; k < textClone.size(); k++) {
-//            perm[k] = textClone.get(k);
-//        }
-//
-//        return perm;
 
 }
