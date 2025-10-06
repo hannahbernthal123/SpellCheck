@@ -1,15 +1,15 @@
 public class Trie {
-    Node node = new Node();
+    TrieNode node = new TrieNode();
 
     public void insert(String word) {
-        Node current = node;
+        TrieNode current = node;
         for (int i = 0; i < word.length(); i++) {
             // The character stored as ASCII. This index is where that character will be stored in the big array.
             int index = word.charAt(i);
 
             // If the letter you're looking to add doesn't exist...
             if (current.getNext()[index] == null) {
-                current.getNext()[index] = new Node();
+                current.getNext()[index] = new TrieNode();
             }
             // Set our current node to the child node.
             current = current.getNext()[index];
@@ -19,7 +19,7 @@ public class Trie {
     }
 
     public boolean find(String word) {
-        Node current = node;
+        TrieNode current = node;
         for (int i = 0; i < word.length(); i++) {
             int index = word.charAt(i);
 

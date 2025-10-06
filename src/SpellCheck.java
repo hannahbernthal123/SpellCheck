@@ -21,43 +21,30 @@ public class SpellCheck {
      * @return String[] of all mispelled words in the order they appear in text. No duplicates.
      */
     public String[] checkWords(String[] text, String[] dictionary) {
-        ArrayList<String> textClone = new ArrayList<>();
-        String[] perm = new String[text.length];
+        // Trie initialization.
+        Trie dictionaryTrie = new Trie();
 
-        // Collect matches (preserve order, remove duplicates)
-        LinkedHashSet<String> incorrectWords = new LinkedHashSet<>();
+        for (String word : dictionary) {
+            dictionaryTrie.insert(word);
+        }
+
+        Trie misspelledTrie = new Trie();
+        ArrayList<String> misspelledWords = new ArrayList<String>();
 
         for (String word : text) {
-            if (!binarySearch(dictionary, word)) {
-                incorrectWords.add(word);
+            if (!dictionaryTrie.find(word) && !misspelledTrie.find(word)) {
+                misspelledTrie.insert(word);
+                misspelledWords.add(word);
             }
         }
 
-        // Method that turns the set into an array.
-        return incorrectWords.toArray(new String[0]);
-    }
+        String[] misp = misspelledWords.toArray(new String[misspelledWords.size()]);
+        return misp;
 
-    private boolean binarySearch(String[] dictionary, String currWord) {
-            int low = 0;
-            int hi = dictionary.length - 1;
-            while (low <= hi) {
-                int mid = low + (hi - low) / 2;
-                // representativeNum is the representation of how the current word compares to the middle of where we are in the dicitonary.
-                // repNum = 0 if the words are the same, is positive if
-                int repNum = dictionary[mid].compareTo(currWord);
-                if (repNum == 0) {
-                    return true;
-                }
-                if (repNum < 0)  {
-                    low = mid + 1;
-                }
-                else {
-                    hi = mid - 1;
-                }
-            }
-            return false;
 
     }
+
+
 
 
 }

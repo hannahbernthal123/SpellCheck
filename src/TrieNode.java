@@ -1,8 +1,8 @@
-public class Node {
+public class TrieNode {
     // radix = 256 because that is the extended ASCII letters.
     int radix = 256;
     boolean wordCheck = false;
-    Node[] nextNode = new Node[radix];
+    TrieNode[] nextNodes = new TrieNode[radix];
 
     public boolean isAWord() {
         return wordCheck;
@@ -13,7 +13,7 @@ public class Node {
     }
 
     // Recursive function that drops you down to the next node.
-    public Node[] getNext() {
-        return nextNode;
+    public TrieNode[] getNext() {
+        return nextNodes;
     }
 }
