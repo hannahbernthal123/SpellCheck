@@ -15,7 +15,7 @@ public class Trie {
             current = current.getNext()[index];
         }
         // Set the boolean to true so you know it is the final node of a word.
-        current.setWordCheck();
+        current.setWord();
     }
 
     public boolean find(String word) {

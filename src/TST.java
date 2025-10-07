@@ -6,7 +6,10 @@ public class TST {
         root.setLetter ('m');
     }
     public void insert(String word) {
-        for (char )
+        TSTNode current = root;
+        for (int i = 0; i < word.length(); i++) {
+
+        }
     }
 
     public boolean find(String word) {

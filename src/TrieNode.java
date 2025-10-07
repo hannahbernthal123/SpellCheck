@@ -8,7 +8,7 @@ public class TrieNode {
         return wordCheck;
     }
 
-    public void setWordCheck() {
+    public void setWord() {
         wordCheck = true;
     }
 
