@@ -21,19 +21,39 @@ public class SpellCheck {
      * @return String[] of all mispelled words in the order they appear in text. No duplicates.
      */
     public String[] checkWords(String[] text, String[] dictionary) {
-        // Trie initialization.
-        Trie dictionaryTrie = new Trie();
+//        // Trie initialization.
+//        Trie dictionaryTrie = new Trie();
+//
+//        for (String word : dictionary) {
+//            dictionaryTrie.insert(word);
+//        }
+//
+//        Trie misspelledTrie = new Trie();
+//        ArrayList<String> misspelledWords = new ArrayList<String>();
+//
+//        for (String word : text) {
+//            if (!dictionaryTrie.find(word) && !misspelledTrie.find(word)) {
+//                misspelledTrie.insert(word);
+//                misspelledWords.add(word);
+//            }
+//        }
+//
+//        String[] misp = misspelledWords.toArray(new String[misspelledWords.size()]);
+//        return misp;
+
+        // TST initalization.
+        TST dictionaryTST = new TST();
 
         for (String word : dictionary) {
-            dictionaryTrie.insert(word);
+            dictionaryTST.insert(word);
         }
 
-        Trie misspelledTrie = new Trie();
+        TST misspelledTST = new TST();
         ArrayList<String> misspelledWords = new ArrayList<String>();
 
         for (String word : text) {
-            if (!dictionaryTrie.find(word) && !misspelledTrie.find(word)) {
-                misspelledTrie.insert(word);
+            if (!dictionaryTST.find(word) && !misspelledTST.find(word)) {
+                misspelledTST.insert(word);
                 misspelledWords.add(word);
             }
         }
@@ -41,10 +61,6 @@ public class SpellCheck {
         String[] misp = misspelledWords.toArray(new String[misspelledWords.size()]);
         return misp;
 
-
     }
-
-
-
 
 }
