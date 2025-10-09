@@ -52,7 +52,7 @@ public class TSTNode {
         return letter;
     }
 
-    // Recursive function that drops you down to the next node options.
+    // Function that drops you down to the next node options.
     public TSTNode[] getNext() {
         return nextNodes;
     }

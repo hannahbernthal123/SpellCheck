@@ -12,7 +12,7 @@ public class TrieNode {
         wordCheck = true;
     }
 
-    // Recursive function that drops you down to the next node.
+    // Function that drops you down to the next node options.
     public TrieNode[] getNext() {
         return nextNodes;
     }
